@@ -1,4 +1,5 @@
-public class ReportWriter {
+public class ReportWriter implements ReportWritable {
+    @Override
     public String write(Submission s, int plag, int code) {
         return "report-" + s.roll + ".txt";
     }

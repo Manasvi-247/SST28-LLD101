@@ -1,4 +1,11 @@
-// Smell: unused UI wrapper
-public class ConsoleUi {
-    public void print(String s) { System.out.println(s); }
+interface DistanceCalculable {
+    double km(GeoPoint a, GeoPoint b);
+}
+
+interface DriverAllocatable {
+    String allocate(String studentId);
+}
+
+interface PaymentChargeable {
+    String charge(String studentId, double amount);
 }

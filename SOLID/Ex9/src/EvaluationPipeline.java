@@ -1,16 +1,22 @@
 public class EvaluationPipeline {
-    // DIP violation – high-level module depends directly on concrete low-level modules
+    private final PlagiarismCheckable checker;
+    private final Gradable grader;
+    private final ReportWritable writer;
+
+    public EvaluationPipeline(PlagiarismCheckable checker, Gradable grader, ReportWritable writer) {
+        this.checker = checker;
+        this.grader = grader;
+        this.writer = writer;
+    }
+
     public void evaluate(Submission sub) {
-        PlagiarismChecker checker = new PlagiarismChecker();
         int plag = checker.check(sub);
         System.out.println("PlagiarismScore=" + plag);
 
         Rubric rubric = new Rubric();
-        CodeGrader grader = new CodeGrader();
         int code = grader.grade(sub, rubric);
         System.out.println("CodeScore=" + code);
 
-        ReportWriter writer = new ReportWriter();
         String reportName = writer.write(sub, plag, code);
         System.out.println("Report written: " + reportName);
 
