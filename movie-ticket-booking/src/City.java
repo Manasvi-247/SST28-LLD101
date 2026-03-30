@@ -1,0 +1,3 @@
+public enum City {
+    BANGALORE, MUMBAI, DELHI, CHENNAI, HYDERABAD
+}
